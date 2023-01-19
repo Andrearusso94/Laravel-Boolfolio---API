@@ -10,6 +10,6 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        return Project::orderByDesc('id')->paginate(5);
+        return Project::with(['type', 'technologys'])->orderByDesc('id')->paginate(5);
     }
 }
