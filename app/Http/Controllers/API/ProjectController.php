@@ -12,4 +12,22 @@ class ProjectController extends Controller
     {
         return Project::with(['type', 'technologys'])->orderByDesc('id')->paginate(5);
     }
+
+    public function show($slug)
+    {
+        //dd($id);
+        $project = Project::where('slug', $slug)->first();
+        // dd($project);
+        if ($project) {
+            return response()->json([
+                'success' => true,
+                'project' => $project,
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'project' => 'Project not found',
+            ]);
+        }
+    }
 }
