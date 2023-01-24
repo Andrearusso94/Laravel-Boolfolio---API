@@ -25,6 +25,16 @@
     </div>
     @enderror
     <div class="mb-3">
+        <label for="link" class="form-label">Link</label>
+        <input type="text" value="{{old('link', $project->link)}}" name="link" id="link" class="form-control @error('link') is-invalid @enderror" placeholder="" aria-describedby="helpId">
+        <small id="helpId" class="text-muted">Help text</small>
+    </div>
+    @error('link')
+    <div class="alert alert-danger" role="alert">
+        {{$message}}
+    </div>
+    @enderror
+    <div class="mb-3">
         <label for="technology" class="form-label">Technology</label>
         <select multiple class="form-select form-select-lg" name="technology[]" id="technology">
             <option value="" disabled>Select Technology</option>

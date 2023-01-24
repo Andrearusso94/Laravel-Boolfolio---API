@@ -8,6 +8,7 @@ use App\Models\Type;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Technology;
+
 use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
@@ -33,8 +34,9 @@ class ProjectController extends Controller
     {
         $type = Type::all();
         $technology = Technology::all();
+
         //dd($type);
-        return view('admin.projects.create', compact('type', 'technology'));
+        return view('admin.projects.create', compact('type', 'technology',));
     }
 
     /**
@@ -53,6 +55,7 @@ class ProjectController extends Controller
         $project = new Project();
         $project->title = $request['title'];
         $project->slug = $request['slug'];
+        $project->link = $request['link'];
         $project->body = $request['body'];
         $project->cover_image = $cover_image;
         $project->type_id = $request['type_id'];
@@ -84,7 +87,7 @@ class ProjectController extends Controller
     {
         $type = Type::all();
         $technology = Technology::all();
-        return view('admin.projects.edit', compact('project', 'type', 'technology'));
+        return view('admin.projects.edit', compact('project', 'type', 'technology',));
     }
 
     /**
@@ -99,8 +102,10 @@ class ProjectController extends Controller
         $data = [
             $project->title = $request['title'],
             $project->slug = $request['slug'],
+            $project->link = $request['link'],
+
             $project->body = $request['body'],
-            $project->cover_image = ['cover_image'],
+
 
         ];
         $project->update($data);

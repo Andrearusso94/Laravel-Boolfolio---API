@@ -5,6 +5,7 @@
 <h1>{{$project->title}}</h1>
 <h4>{{$project->type ? $project->type->name : 'undefined'}}</h4>
 <h5>{{$project->slug}}</h5>
+<h6>{{$project->link}}</h6>
 <div class="content">
     <p>{{$project->body}}</p>
 
