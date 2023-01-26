@@ -11,7 +11,7 @@
     </ul>
 </div>
 @endif-->
-<form action="{{route('admin.project.update', $project->slug)}}" method="post">
+<form action="{{route('admin.project.update', $project->slug)}}" method="post" enctype="multipart/form-data">
     @csrf
     @method('PUT')
     <div class="mb-3">

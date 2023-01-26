@@ -4,6 +4,7 @@ use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\ProjectController;
+use App\Http\Controllers\APILeadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +24,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/project', [ProjectController::class, 'index']);
 Route::get('/project/{project:slug}', [ProjectController::class, 'show']);
+Route::post('/contacts', [APILeadController::class, 'store']);
